@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <div class="container">
+        <h2>Form Pendaftaran</h2>
+
+        <div class="alert" id="alert">Semua data harus diisi!</div>
+
+        <input type="text" id="nama" placeholder="Nama Lengkap">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="daftar()">Daftar</button>
+    </div>
+
+    <script>
+        function daftar() {
+            let nama = document.getElementById("nama").value;
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("password").value;
+            let alertBox = document.getElementById("alert");
+
+            if (nama === "" || email === "" || pass === "") {
+                alertBox.style.display = "block";
+            } else {
+                alertBox.style.display = "none";
+                alert("Pendaftaran berhasil!\nSelamat datang, " + nama);
+            }
+        }
+    </script>
+</body>
+</html>

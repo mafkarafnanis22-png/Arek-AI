@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -15,15 +16,17 @@ body {
 /* ===== INTRO ANIMATION ===== */
 #intro {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(135deg, #171717, #1f1f1f);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     animation: fadeOut 1s ease forwards;
-    animation-delay: 7s; /* durasi intro */
+    animation-delay: 3s;/* durasi intro */
 }
 
 .logo1 {
@@ -43,24 +46,42 @@ body {
     margin-top: 20px;
     animation: spin 1s linear infinite;
 }
-.logo1 h6{
+
+.logo1 h6 {
     margin-top: 1px;
     color: #00eaff;
 }
+
 /* animasi */
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 @keyframes pop {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
+
 /* ===== MAIN CONTENT ===== */
 /* NAVBAR */
 .navbar {
@@ -70,13 +91,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(255,255,255,0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     top: 0;
     z-index: 999;
-    opacity: 0;        /* DISINI FIX */
-    transition: 1s;    /* ANIMASI MUNCUL */
+    opacity: 0;
+    /* DISINI FIX */
+    transition: 1s;
+    /* ANIMASI MUNCUL */
 }
+
 .logo2 {
     font-size: 24px;
     font-weight: bold;
@@ -125,9 +149,11 @@ body {
     .nav-links {
         gap: 15px;
     }
+
     .logo {
         font-size: 20px;
     }
+
     .nav-links a {
         font-size: 16px;
     }

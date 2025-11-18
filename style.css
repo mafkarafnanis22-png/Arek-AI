@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -20,7 +26,7 @@ body {
     animation-delay: 7s; /* durasi intro */
 }
 
-.logo {
+.logo1 {
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 4px;
@@ -37,12 +43,10 @@ body {
     margin-top: 20px;
     animation: spin 1s linear infinite;
 }
-.logo h6{
+.logo1 h6{
     margin-top: 1px;
     color: #00eaff;
 }
-/* ===== MAIN CONTENT ===== */
-
 /* animasi */
 @keyframes spin {
     to { transform: rotate(360deg); }
@@ -56,4 +60,75 @@ body {
 @keyframes pop {
     0% { transform: scale(0.5); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
+}
+/* ===== MAIN CONTENT ===== */
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 15px 40px;
+    background: #151515;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    opacity: 0;        /* DISINI FIX */
+    transition: 1s;    /* ANIMASI MUNCUL */
+}
+.logo2 {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #00eaff;
+}
+
+/* MENU LIST */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    position: relative;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+/* Efek Hover Neon */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #00eaff;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00eaff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .nav-links {
+        gap: 15px;
+    }
+    .logo {
+        font-size: 20px;
+    }
+    .nav-links a {
+        font-size: 16px;
+    }
 }

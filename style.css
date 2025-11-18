@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: fadeOut 1s ease forwards;
-    animation-delay: 3s; /* durasi intro */
+    animation-delay: 7s; /* durasi intro */
 }
 
 .logo {
@@ -37,18 +37,11 @@ body {
     margin-top: 20px;
     animation: spin 1s linear infinite;
 }
-
+.logo h6{
+    margin-top: 1px;
+    color: #00eaff;
+}
 /* ===== MAIN CONTENT ===== */
-#main {
-    padding: 40px;
-    text-align: center;
-}
-
-/* disembunyikan dulu */
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
 
 /* animasi */
 @keyframes spin {
@@ -63,8 +56,4 @@ body {
 @keyframes pop {
     0% { transform: scale(0.5); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
-}
-.logo h6{
-    margin-top: 1px;
-    color: #00eaff;
 }

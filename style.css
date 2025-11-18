@@ -1,58 +1,70 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #ff8c00, #c99b3f, #fee961);
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    overflow: hidden;
+}
+
+/* ===== INTRO ANIMATION ===== */
+#intro {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #171717, #1f1f1f);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    animation: fadeOut 1s ease forwards;
+    animation-delay: 3s; /* durasi intro */
 }
 
-.container {
-    width: 90%;
-    max-width: 400px;
-    background: white;
-    padding: 1cm;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    animation: pop 1s ease;
 }
 
-h2 {
+/* Loading Circle */
+.loading {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #444;
+    border-top-color: #00eaff;
+    border-radius: 50%;
+    margin-top: 20px;
+    animation: spin 1s linear infinite;
+}
+
+/* ===== MAIN CONTENT ===== */
+#main {
+    padding: 40px;
     text-align: center;
-    margin-bottom: 20px;
-    color: #ff8800;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+/* disembunyikan dulu */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #ff8800;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+/* animasi */
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
-button:hover {
-    background: #ff6600;
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
-.alert {
-    padding: 10px;
-    background: #ffdddd;
-    border-left: 5px solid red;
-    margin-top: 10px;
-    display: none;
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
-/* beranda */
+.logo h6{
+    margin-top: 1px;
+    color: #00eaff;
+}

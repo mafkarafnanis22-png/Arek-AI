@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: linear-gradient(to bottom right, #ff8c00, #c99b3f, #fee961);
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,7 +13,7 @@ body {
     width: 90%;
     max-width: 400px;
     background: white;
-    padding: 25px;
+    padding: 1cm;
     border-radius: 15px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
@@ -55,3 +55,4 @@ button:hover {
     margin-top: 10px;
     display: none;
 }
+/* beranda */

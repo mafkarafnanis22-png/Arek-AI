@@ -6,37 +6,37 @@
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
     background: #111;
     color: white;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
-/* ===== INTRO ANIMATION ===== */
+/* ===== INTRO ===== */
 #intro {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: linear-gradient(135deg, #171717, #1f1f1f);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: fadeOut 1s ease forwards;
-    animation-delay: 3s;/* durasi intro */
+    z-index: 9999;
+    transition: opacity 0.8s;
 }
 
 .logo1 {
-    font-size: 40px;
+    font-size: 42px;
     font-weight: bold;
     letter-spacing: 4px;
     animation: pop 1s ease;
+    color: white;
 }
 
-/* Loading Circle */
+.logo1 h6 {
+    color: #00eaff;
+    margin-top: 10px;
+}
+
 .loading {
     width: 60px;
     height: 60px;
@@ -47,54 +47,29 @@ body {
     animation: spin 1s linear infinite;
 }
 
-.logo1 h6 {
-    margin-top: 1px;
-    color: #00eaff;
-}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-/* animasi */
-@keyframes spin {
-    to {transform: rotate(360deg);}
-}
-
-@keyframes fadeOut {
-    0% {opacity: 1;}
-    100% {opacity: 0;visibility: hidden;}
-}
-
-@keyframes pop {
-    0% {transform: scale(0.5);opacity: 0;}
-
-    100% {transform: scale(1);opacity: 1;}
-}
-
-/* ===== MAIN CONTENT ===== */
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar {
     width: 100%;
-    padding: 15px 40px;
+    padding: 20px 60px;
     background: #151515;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.06);
     position: fixed;
     top: 0;
-    z-index: 999;
-    opacity: 0;
-    /* DISINI FIX */
-    transition: 1s;
-    /* ANIMASI MUNCUL */
+    z-index: 1000;
 }
 
 .logo2 {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
     color: #00eaff;
+    font-weight: 700;
+    font-size: 22px;
 }
 
-/* MENU LIST */
 .nav-links {
     list-style: none;
     display: flex;
@@ -102,109 +77,223 @@ body {
 }
 
 .nav-links a {
-    text-decoration: none;
-    font-size: 18px;
     color: #f1f1f1;
+    text-decoration: none;
     position: relative;
-    padding: 5px 0;
-    transition: 0.3s;
+    padding: 6px 0;
 }
 
-/* Efek Hover Neon */
+.nav-links a.active,
+.nav-links a:hover {
+    color: #00eaff;
+}
+
 .nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px;
+    bottom: -6px;
     width: 0;
     height: 2px;
     background: #00eaff;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #00eaff;
-}
-
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    .nav-links {gap: 15px;}
-    .logo {font-size: 20px;}
-    .nav-links a {font-size: 16px;}
-}
-/* isi halaman pertama */
-/* ===== HALAMAN AWAL ===== */
+/* ===== HERO (index.html) ===== */
 .hero {
-    width: 100%;
-    height: 100vh;
-    background: url('img/bg-salak.jpg') center/cover no-repeat;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
-    opacity: 0;
-    animation: showHero 1.3s ease forwards;
-    animation-delay: 4s;
+    padding: 100px 20px 60px;
+    background: url('foto/hipwee-Tatenger-Kota-Bangkalan.jpg') center/cover no-repeat fixed;
 }
 
 .hero-text h1 {
-    font-size: 48px;
+    font-size: 56px;
     color: #00eaff;
     text-shadow: 0 0 15px #00eaff;
+    margin-bottom: 20px;
 }
 
 .hero-text p {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #fff;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.7;
 }
 
-/* ANIMASI HERO */
-@keyframes showHero {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== GALERI SLIDER ===== */
-.galeri {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.galeri h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    color: #00eaff;
-}
-
-.slider {
-    max-width: 800px;
-    margin: auto;
-    position: relative;
-}
-
-.slide {
-    display: none;
-}
-
-.slide img {
-    width: 100%;
+/* ===== BUTTONS ===== */
+.btns { text-align: center; margin-top: 30px; }
+.btn, .btn-outline {
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 0 10px;
     border-radius: 10px;
-    box-shadow: 0 0 20px #000;
-    animation: zoom 2s ease;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
-@keyframes zoom {
-    from { transform: scale(1.1); opacity: 0.6; }
-    to { transform: scale(1); opacity: 1; }
+.btn { background: #00eaff; color: #000; }
+.btn-outline { background: transparent; border: 2px solid #00eaff; color: #00eaff; }
+.btn:hover { background: #00ffff; }
+.btn-outline:hover { background: #00eaff; color: #000; }
+
+/* ===== MATERI PAGE - CARD LAYOUT CANTIK ===== */
+.container {
+    padding: 120px 20px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 15px;
+    line-height: 1.8;
+    backdrop-filter: blur(5px);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.page-header h1 {
+    font-size: 40px;
+    color: #00eaff;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #aaa;
+}
+
+.materi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.materi-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.materi-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+}
+
+.card-icon {
+    font-size: 50px;
+    color: #00eaff;
+    text-align: center;
+    padding: 20px 0 10px;
+}
+
+.materi-card h2 {
+    text-align: center;
+    color: #00eaff;
+    margin: 15px 0;
+    font-size: 24px;
+}
+
+.materi-card p {
+    padding: 0 25px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.materi-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #00eaff;
+}
+
+/* Card bisa diklik untuk musik */
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background: rgba(0, 234, 255, 0.15) !important;
+    border: 2px dashed #00eaff;
+}
+
+/* Tombol Quiz Besar */
+.quiz-button {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.big-btn {
+    font-size: 24px;
+    padding: 18px 50px !important;
+    border-radius: 50px;
+}
+
+.big-btn i {
+    margin-right: 12px;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+    .page-header h1 { font-size: 32px; }
+    .materi-card img { height: 180px; }
+}
+
+.content h2 { font-size: 32px; color: #00eaff; margin-bottom: 20px; text-align: center; }
+.content h3 { color: #00eaff; margin: 30px 0 15px; }
+.content img { width: 100%; border-radius: 12px; margin: 15px 0; }
+
+/* ===== QUIZ PAGE ===== */
+.quiz-body { background: #121212; display: flex; flex-direction: column; align-items: center; padding-top: 100px; }
+.quiz-container {
+    background: #1c1c1c;
+    width: 90%;
+    max-width: 550px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    text-align: center;
+    margin-top: 20px;
+}
+.option {
+    width: 100%;
+    background: #2a2a2a;
+    padding: 15px;
+    margin: 12px 0;
+    border: 2px solid #333;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.option:hover { background: #3a3a3a; }
+
+/* ===== UTILITY ===== */
+.hidden { opacity: 0; visibility: hidden; }
+
+/* Responsif */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    .nav-links { gap: 15px; font-size: 14px; }
+    .hero-text h1 { font-size: 38px; }
+    .hero-text p { font-size: 16px; }
 }

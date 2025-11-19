@@ -1,58 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz | Kota salak</title>
+    <title>QuizKalan | Peel The Salak</title>
+    <link rel='icon' type='image/png' href='quiz.png'>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
 
-    <!-- Intro / Loading Screen -->
+    <!-- Intro Screen -->
     <div id="intro">
         <div class="logo1">SELAMAT DATANG</div>
-        <div class="logo1"><h6>Quiz Kota Salak</h6></div>
+        <div class="logo1"><h6>QuizKalan | Peel The Salak!</h6></div>
         <div class="loading"></div>
     </div>
 
-    <!-- Halaman Utama -->
-    <nav class="navbar">
-        <div class="logo2">Kota Salak</div>
-        <ul class="nav-links">
-            <li><a href="#materi">Materi</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-        </ul>
-    </nav>
+    <!-- Konten Utama (awalnya disembunyikan) -->
+    <div id="main-content" class="hidden">
 
- <!-- ===== HALAMAN UTAMA ===== -->
-       <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Kabupaten Bangkalan</h1>
-            <p>Bangkalan adalah salah satu kabupaten yang terletak di ujung barat Pulau Madura,
-               Jawa Timur. Kota ini dikenal dengan julukan “Kota Salak”, karena memiliki kawasan
-               penghasil salak terbesar dan paling populer di Madura, terutama Salak Bangkalan yang
-               terkenal dengan rasa manis-asam yang segar dan aromanya yang khas. Selain terkenal dengan
-               buah salaknya, Bangkalan juga memiliki banyak pesona lain, mulai dari wisata alam, budaya,
-               kuliner, hingga sejarah yang kuat. Daerah ini memiliki suasana yang tenang, masyarakat yang ramah,
-               serta banyak tradisi Madura yang masih dijaga hingga sekarang.</p>
-        </div>
-    </section>
-    <!-- GALERI -->
-    <section class="galeri">
-        <h2>Galeri Keindahan Kota Salak</h2>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo2">QuizKalan</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+        </nav>
 
-        <div class="slider">
-            <div class="slide fade">
-                <img src="alun-alun.jpeg" alt="Kebun Salak">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Selamat Datang di Kabupaten Bangkalan</h1>
+                <p>
+                    Bangkalan adalah salah satu kabupaten yang terletak di ujung barat Pulau Madura,
+                    Jawa Timur. Kota ini dikenal dengan julukan “Kota Salak”, karena memiliki kawasan
+                    penghasil salak terbesar dan paling populer di Madura, terutama Salak Bangkalan yang
+                    terkenal dengan rasa manis-asam yang segar dan aromanya yang khas. Selain terkenal dengan
+                    buah salaknya, Bangkalan juga memiliki banyak pesona lain, mulai dari wisata alam, budaya,
+                    kuliner, hingga sejarah yang kuat.
+                </p>
+                <div class="btns">
+                    <a class="btn" href="materi.html">Buka Materi</a>
+                    <a class="btn btn-outline" href="quiz.html">Langsung ke Quiz</a>
+                </div>
             </div>
-            <div class="slide fade">
-                <img src="alun-alun.jpeg" alt="Salak Fresh">
-            </div>
-            <div class="slide fade">
-                <img src="alun-alun.jpeg" alt="Panen Salak">
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <script>
+        // Hilangkan intro setelah 3 detik, lalu munculkan konten utama + navbar
+        setTimeout(() => {
+            document.getElementById("intro").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("intro").style.display = "none";
+                document.getElementById("main-content").classList.remove("hidden");
+            }, 800);
+        }, 3000); // ubah angka ini untuk durasi intro (dalam milidetik)
+    </script>
 </body>
 </html>

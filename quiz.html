@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizKalan | Peel The Salak</title>
+    <link rel='icon' type='image/png' href='quiz.png'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #1c1c1c;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.25);
+            text-align: center;
+        }
+        h2 {
+            color: cyan;
+            margin: 0 0 30px 0;
+            font-size: 20px;  /*uk teks quiz kota salak di atas soal*/
+        }
+        h3 {
+            font-size: 30px;  /*uk teks soal*/
+            margin-top: 0mm;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .option {
+            width: 100%;
+            background: #2a2a2a;
+            padding: 16px;
+            margin: 7px 0;
+            border: 2px solid #333;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            background: #3a3a3a;
+            transform: translateY(-2px);
+        }
+        #scoreBox {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 25px;
+            color: cyan;
+        }
+        .btns {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 20px;
+            background: cyan;
+            color: black;
+            font-weight: bold;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #00ffff; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid cyan;
+            color: cyan;
+        }
+        .btn-outline:hover {
+            background: cyan;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>QuizKalan</h2>
+
+        <h3 id="question">Loading...</h3>
+        <div id="options"></div>
+
+        <div id="scoreBox"></div>
+
+        <div class="btns">
+            <a class="btn" href="materi.html">Kembali ke Materi</a>
+            <a class="btn btn-outline" href="index.html">Kembali ke Home</a>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "Julukan Bangkalan adalah…", options: ["Kota Garam", "Kota Salak", "Kota Sapi"], answer: 1 },
+            { q: "Bangkalan terletak di pulau apa?", options: ["Jawa", "Bali", "Pulau Madura"], answer: 2 },
+            { q: "Buah apa yang membuat Bangkalan dijuluki Kota Salak?", options: ["Mangga", "Salak", "Durian"], answer: 1 },
+            { q: "Nama salak khas Bangkalan adalah…", options: ["Salak Pondoh", "Salak Bali", "Salak Madura"], answer: 2 },
+            { q: "Dinasti kerajaan Bangkalan pada abad 17–18 adalah…", options: ["Panembahan", "Cakraningrat", "Mataram"], answer: 1 },
+            { q: "Jembatan yang menghubungkan Bangkalan dengan Surabaya adalah…", options: ["Jembatan Merah", "Jembatan Suramadu", "Jembatan Pasopati"], answer: 1 },
+            { q: "Panjang Jembatan Suramadu adalah…", options: ["5,4 km", "3,2 km", "7,1 km"], answer: 0 },
+            { q: "Tahun diresmikannya Jembatan Suramadu adalah…", options: ["2005", "2009", "2012"], answer: 1 },
+            { q: "Wisata bekas tambang kapur di Bangkalan bernama…", options: ["Bukit Jaddih", "Bukit Tinggi", "Bukit Kapur"], answer: 0 },
+            { q: "Pantai di Bangkalan yang terkenal dengan sunset indah adalah…", options: ["Pantai Kuta", "Pantai Siring Kemuning", "Pantai Parangtritis"], answer: 1 },
+            { q: "Kuliner bebek goreng legendaris Bangkalan adalah…", options: ["Bebek Goreng H. Slamet", "Bebek Sinjay", "Bebek Kaleyo"], answer: 1 },
+            { q: "Kuliner nasi campur khas Bangkalan dengan kerupuk rambak disebut…", options: ["Nasi Uduk", "Nasi Serpang", "Nasi Krawu"], answer: 1 },
+            { q: "Tradisi pacuan sapi khas Bangkalan disebut…", options: ["Karapan Sapi", "Pacuan Kuda", "Toraja Rambu Solo"], answer: 0 },
+            { q: "Karapan Sapi biasanya diadakan setelah musim apa?", options: ["Kemarau", "Panen", "Hujan"], answer: 1 },
+            { q: "Alat musik tiup tradisional Madura yang sering mengiringi karapan sapi adalah…", options: ["Angklung", "Saronen", "Gamelan"], answer: 1 }
+        ];
+
+        let index = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            if (index >= questions.length) {
+                document.getElementById("question").innerText = "Kuis Selesai! 🎉";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("scoreBox").innerHTML = `Skor Akhir: <strong>${score}/${questions.length}</strong>`;
+                return;
+            }
+
+            const q = questions[index];
+            document.getElementById("question").innerText = q.q;  // ← Hanya soal, tanpa nomor
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement("button");
+                btn.className = "option";
+                btn.innerText = opt;
+                btn.onclick = () => choose(i, btn);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function choose(selected, btn) {
+            const correct = questions[index].answer;
+            if (selected === correct) {
+                score++;
+                btn.style.background = '#4CAF50';
+            } else {
+                btn.style.background = '#f44336';
+                document.querySelectorAll('.option')[correct].style.background = '#4CAF50';
+            }
+            btn.style.color = 'white';
+
+            document.querySelectorAll('.option').forEach(b => b.disabled = true);
+
+            setTimeout(() => {
+                index++;
+                loadQuestion();
+            }, 1000);
+        }
+
+        loadQuestion();
+    </script>
+</body>
+
+</html>

@@ -16,7 +16,7 @@
         <div class="loading"></div>
     </div>
 
-    <!-- Konten Utama (awalnya disembunyikan) -->
+    <!-- Konten Utama -->
     <div id="main-content" class="hidden">
 
         <!-- Navbar -->
@@ -29,10 +29,19 @@
             </ul>
         </nav>
 
-        <!-- Hero Section -->
+        <!-- HERO SECTION dengan SLIDER di background -->
         <section class="hero">
+            <!-- Slider hanya sebagai background -->
+            <div class="slider">
+                <div class="slide" style="background-image: url('2.png');"></div>
+                <div class="slide" style="background-image: url('1.png');"></div>
+                <div class="slide" style="background-image: url('3.png');"></div>
+                <div class="slide" style="background-image: url('4.png');"></div>
+            </div>
+
+            <!-- Teks hero tetap di atas slider -->
             <div class="hero-text">
-                <h1>Selamat Datang di Kabupaten Bangkalan</h1>
+                <h1>Hey - Explore Bangkalan Yuk!</h1>
                 <p>
                     Bangkalan adalah salah satu kabupaten yang terletak di ujung barat Pulau Madura,
                     Jawa Timur. Kota ini dikenal dengan julukan “Kota Salak”, karena memiliki kawasan
@@ -50,14 +59,13 @@
     </div>
 
     <script>
-        // Hilangkan intro setelah 3 detik, lalu munculkan konten utama + navbar
         setTimeout(() => {
             document.getElementById("intro").style.opacity = "0";
             setTimeout(() => {
                 document.getElementById("intro").style.display = "none";
                 document.getElementById("main-content").classList.remove("hidden");
             }, 800);
-        }, 3000); // ubah angka ini untuk durasi intro (dalam milidetik)
+        }, 3000);
     </script>
 </body>
 </html>
